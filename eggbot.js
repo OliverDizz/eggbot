@@ -105,4 +105,4 @@ client.on('message', message => {
 });
 
 //Logs in the bot with the token
-client.login('MjYzNzY5MzQ5MzQzNTQzMjk2.DSKOBw.15ka
+client.login('MjYzNzY5MzQ5MzQzNTQzMjk2.DSRFow.YYNOR3CGAHO5F_iXbkzSUqp3aGs');
