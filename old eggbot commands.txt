@@ -1,0 +1,190 @@
+using Discord;
+using Discord.Commands;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace EggBot
+{
+    class MyBot
+    {
+        DiscordClient discord;
+        CommandService commands;
+
+        public MyBot()
+        {
+            discord = new DiscordClient(x =>
+            {
+                x.LogLevel = LogSeverity.Info;
+                x.LogHandler = Log;
+            });
+
+            discord.UsingCommands(x =>
+            {
+                x.PrefixChar = '!';
+                x.AllowMentionPrefix = true;
+            });
+
+            commands = discord.GetService<CommandService>();
+            String Party = "";
+
+            EggbotHelpText();
+
+            //Linkers
+            TogethertubeLinker();
+            tg_room_one();
+
+            ///////////////
+            RabbitLinker();
+            Test();
+            DickPost();
+            TriHard();
+
+
+            discord.ExecuteAndWait(async () =>
+            {
+                await discord.Connect("MjYzNzY5MzQ5MzQzNTQzMjk2.C0XFIQ.duy0yh5CoQlyPIZ27u6v_vo_Ouo", TokenType.Bot);
+            });
+        }
+
+        //Postar alla nuvarande kommandon
+        private void EggbotHelpText()
+        {
+            String message =
+               "*Hello! My name is EggBot!*"
+                + "\r\n"
+                + "*These are my current commands:*"
+                + "\r\n"
+                + "\r\n"
+                + "1. [!tg]: Fetches a togethertube link"
+                + "\r\n"
+                + "2. [!rabbit]: Fetches a Rabb.it link"
+                + "\r\n"
+                + "3. [!dick]: Posts a random dick";
+
+            commands.CreateCommand("eggbot")
+                .Do(async (e) =>
+                {
+                    await e.Channel.SendMessage(message);
+                });
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Postar en togethertube länk
+        private void TogethertubeLinker()
+        {
+            commands.CreateCommand("tg")
+           .Do(async (e) =>
+           {
+               await e.Channel.SendMessage("*Choose a togethertube room from the ones below*" + "\r\n" + "*To choose a room, write !tg with the corresponding room number*"
+                   + "\r\n" + "\r\n" + "1. Room one" + "\r\n" + "2. Room two (CURRENTLY UNAVAILABLE)" + "\r\n" + "3. Room three (CURRENTLY UNAVAILABLE)");
+               await e.Channel.SendMessage("*For more commands type [!eggbot]*");
+           });
+        }
+
+        //Links togethertube room one
+        private void tg_room_one()
+        {
+            commands.CreateCommand("tg1")
+           .Do(async (e) =>
+           {
+               await e.Channel.SendMessage("Togethertube Room 1");
+               await e.Channel.SendMessage("https://togethertube.com/rooms/upr-room-1");
+               await e.Channel.SendMessage("*For more commands type [!eggbot]*");
+           });
+        }
+    
+
+         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////       
+        //Postar en rabbit länk
+        private void RabbitLinker()
+        {
+            commands.CreateCommand("rabbit")
+           .Do(async (e) =>
+           {
+               await e.Channel.SendMessage("https://www.rabb.it/OliverDizz");
+               await e.Channel.SendMessage("*For more commands type [!eggbot]*");
+           });
+        }
+
+        private void Test()
+        {
+            commands.CreateCommand("test")
+           .Do(async (e) =>
+           {
+               Random rnd = new Random();
+               int month = rnd.Next(1, 3);
+               // month: >= 1 and < 3
+
+               string message = "";
+
+               if (month == 1)
+               {
+                   message = "talet är ett";
+               }
+               else if(month == 2)
+               {
+                   message = "talet är två";
+               }
+               else if(month == 3)
+               {
+                   message = "talet är tre";
+               }
+
+               await e.Channel.SendMessage(message);
+               await e.Channel.SendMessage("*For more commands type [!eggbot]*");
+           });
+        }
+
+        //posts a random dick
+        private void DickPost()
+        {
+            commands.CreateCommand("dick")
+           .Do(async (e) =>
+           {
+               string[] list = new string[] {
+                   "http://blog.memes.com/wp-content/uploads/2015/09/dickbutt2.png",
+                   "http://cdn.smosh.com/sites/default/files/bloguploads/funny-teamwork-dick-hands.jpg",
+                   "https://i.pinimg.com/736x/47/35/2e/47352e6305cb94ff206f507bc780415b--funny-shit-funny-stuff.jpg",
+                   "http://senseslost.com/third-rail-content/uploads/2008/06/penisweather.jpg",
+                   "https://pics.me.me/dog-dick-19938458.png",
+                   "https://i.pinimg.com/236x/7c/7d/d8/7c7dd8b9af7cc6245822304f278915c5--funny-gifs.jpg",
+                   "http://i.imgur.com/iiV7V6N.jpg"  };
+               Random rnd = new Random();
+
+               int random = rnd.Next(7);
+
+               await e.Channel.SendMessage(list[random]);
+               
+               await e.Channel.SendMessage("You just got dicced' xDDD");
+               await e.Channel.SendMessage("*For more commands type [!eggbot]*");
+           });
+        }
+
+
+        //posts a random dick
+        private void TriHard()
+        {
+            commands.CreateCommand("trihard")
+           .Do(async (e) =>
+           {
+               
+               await e.Channel.SendMessage("https://ih0.redbubble.net/image.53560975.2549/flat,800x800,075,f.jpg");
+           });
+        }
+
+
+
+
+
+
+
+        private void Log(object sender, LogMessageEventArgs e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+}
