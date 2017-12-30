@@ -60,29 +60,29 @@ client.on('message', message => {
 					+ "\r\n" + "\r\n" + "• Room 1" + "\r\n" + "• Room 2 (CURRENTLY UNAVAILABLE)" + "\r\n" + "• Room 3 (CURRENTLY UNAVAILABLE)");
 		message.channel.send(EGGBOT_MESSAGE);
 	}	
-	//Postar room 1
-	if(command === "tg1"){
-		message.channel.send("Togethertube Room 1");
-		message.channel.send("https://togethertube.com/rooms/upr-room-1");
-		message.channel.send("*For more commands type [!eggbot]*");
-	
-	}
-	
-	//Postar room 2
-	if(command === "tg2"){
-		message.channel.send("Togethertube Room 2");
-		message.channel.send("ROOM CURRENTLY UNAVAILABLE");
-		message.channel.send("*For more commands type [!eggbot]*");
-	
-	}
-	
-	//Postar room 3
-	if(command === "tg3"){
-		message.channel.send("Togethertube Room 3");
-		message.channel.send("ROOM CURRENTLY UNAVAILABLE");
-		message.channel.send("*For more commands type [!eggbot]*");
-	
-	}
+		//Postar room 1
+		if(command === "tg1"){
+			message.channel.send("Togethertube Room 1");
+			message.channel.send("https://togethertube.com/rooms/upr-room-1");
+			message.channel.send("*For more commands type [!eggbot]*");
+		
+		}
+		
+		//Postar room 2
+		if(command === "tg2"){
+			message.channel.send("Togethertube Room 2");
+			message.channel.send("ROOM CURRENTLY UNAVAILABLE");
+			message.channel.send("*For more commands type [!eggbot]*");
+		
+		}
+		
+		//Postar room 3
+		if(command === "tg3"){
+			message.channel.send("Togethertube Room 3");
+			message.channel.send("ROOM CURRENTLY UNAVAILABLE");
+			message.channel.send("*For more commands type [!eggbot]*");
+		
+		}
 
 
 //Postar en rabbitlänk
@@ -98,7 +98,19 @@ client.on('message', message => {
 		message.channel.send(x);
 
   }
-
+  
+  //testing
+	if(command === "test2"){
+		const picture4 = require("./peen_folder/pic4");
+		Client.sendFile(channel, picture4, name, content);
+  
+  
+  
+  
+  
+  
+  
+  
 
 
 
