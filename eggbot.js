@@ -49,7 +49,7 @@ client.on('message', message => {
                 + "\r\n"
                 + "2. [!rabbit]: Fetches a Rabb.it link"
                 + "\r\n"
-                + "3. [!dick]: Posts a random dick";
+                + "3. [!dick]: Posts a random dick (WORK IN PROGRESS)";
 	
 	message.channel.send(eggbotmessage);
 	}
@@ -99,17 +99,7 @@ client.on('message', message => {
 
   }
   
-  //testing
-	if(command === "test2"){
-		const picture4 = require("./peen_folder/pic4");
-		Client.sendFile(channel, picture4, name, content);
-  
-  
-  
-  
-  
-  
-  
+ 
   
 
 
